@@ -1,4 +1,8 @@
-github https://ddusy.github.io
+ # Site settings Configuring the site
+title : ' your awesome title '
+ description : ' your web description '
+ keywords : ' your web keywords, another keywords '
+ url : ' https://DDusy.github.io '
 
 #Author/Blogger
 NickName: 'DDusy'
@@ -12,10 +16,18 @@ aboutyou: "
           "
 portraits: '/assets/madara.png' # your portraits image file path
 
----
+layout: post
+title:  "post title"
+subtitle: 'post subtitle'
+date:   2018-05-29 08:44:13
+tags: html js css
+description: ''
+color: 'rgb(154,133,255)'
+cover: ''
+typora-root-url: ".."
+
 layout: default
 title: 타이틀 테스트
 page-title: awesome page-title.
 home-title: awesome home-title.
 description: description
----
