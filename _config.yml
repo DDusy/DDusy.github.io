@@ -1,1 +1,21 @@
 github https://ddusy.github.io
+
+#Author/Blogger
+NickName: 'DDusy'
+webtitle: '끄적끄적'
+bio: 'Student, Computer Programmer And a Scented Soul'
+about: true
+aboutyou: "
+          your awesome story <br>
+          use br tag for new line <br>
+          and &\emsp for Chinese space
+          "
+portraits: '/assets/madara.png' # your portraits image file path
+
+---
+layout: default
+title: 타이틀 테스트
+page-title: awesome page-title.
+home-title: awesome home-title.
+description: description
+---
