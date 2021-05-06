@@ -1,6 +1,6 @@
 title: 뚜시뚜시 블로그
 page-title: 공부 정리 블로그
-home-title: :sunglasses:
+home-title: 
 url: 'https://ddusy.github.io/'
 nav:
   Home: /
@@ -12,7 +12,7 @@ author: true
 name: Your Beutiful Name
 NickName: NickName
 webtitle: Your awesome title
-bio: 안녕하세요! :sunglasses
+bio: 안녕하세요! 
 about: true
 aboutyou: " your awesome story <br> use br tag for new line <br> and &\emsp for Chinese space "
 portraits: /assets/GitBlogImg.jpg
