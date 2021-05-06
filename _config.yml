@@ -1,6 +1,7 @@
 title: 뚜시뚜시 블로그
 page-title: 공부 정리 블로그
-home-title: 
+home-title: Test
+description: TEST
 url: 'https://ddusy.github.io/'
 nav:
   Home: /
@@ -9,15 +10,15 @@ nav:
   About: /about/
   reLink: /reLink/
 author: true
-name: Your Beutiful Name
-NickName: NickName
-webtitle: Your awesome title
+name: 
+NickName: 뚜시뚜시
+webtitle: 뚜시뚜시 블로그
 bio: 안녕하세요! 
 about: true
 aboutyou: " your awesome story <br> use br tag for new line <br> and &\emsp for Chinese space "
 portraits: /assets/GitBlogImg.jpg
 honorificPrefix: '***'
-image: /assets/GitBlogImg.jpg
+image: /assets/GitBlogImg.png
 familyname:
 honorificSuffix: King
 disambiguatingDescription: Your awesome description
