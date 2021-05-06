@@ -1,9 +1,9 @@
-title: your awesome title
+title: 타이틀 테스트
 page-title: Your Blog.
 home-title: It's Your
 description: 'Thoughts, Stories and Ideas'
 keywords: 'your web keywords, another keywords'
-url: 'https://DDusy.github.io '
+url: 'https://ddusy.github.io/'
 nav:
   Home: /
   Tags: /tags/
