@@ -15,7 +15,7 @@ NickName: 뚜시뚜시
 webtitle: 뚜시뚜시 블로그
 bio: 안녕하세요! 
 about: true
-aboutyou: " your awesome story <br> use br tag for new line <br> and &\emsp for Chinese space "
+aboutyou: "  "
 portraits: /assets/GitBlogImg.jpg
 honorificPrefix: '***'
 image: /assets/GitBlogImg.png

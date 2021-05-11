@@ -1,3 +1,2 @@
-
-typora-root-url: ".."
+정리용 블로그
 
