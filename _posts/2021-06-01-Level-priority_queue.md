@@ -2,8 +2,8 @@
 layout: post
 title: "Level 2 더 맵게 / 우선순위 큐 사용"
 date: 2021-06-01 
-color: rgb(0,0,0)
-cover: '../assets/jekyll.png'
+color: rgb(100,100,200)
+cover: '../assets/test.png'
 tags:	코테
 ---
 

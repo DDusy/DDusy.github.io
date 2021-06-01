@@ -1,0 +1,43 @@
+I"s<h4 id="행렬의-곱셈">행렬의 곱셈</h4>
+
+<h4><img src="D:\DDusy.github.io\assets\MatrixMultiple.png" alt="MatrixMultiple" /></h4>
+
+<ul>
+  <li>
+    <p>앞 행렬의 열의 개수 = 뒤 행렬의 행의 개수 일때 곱셈 성립</p>
+
+    <p><img src="D:\DDusy.github.io\assets\MatrixMultiple2.png" alt="MatrixMultiple2" /></p>
+  </li>
+  <li>
+    <p>앞 행렬의 i행과 뒤 행렬의 j열의 성분을 차례로 곱한 값이  (i,j) 성분</p>
+  </li>
+  <li>
+    <p>행렬의 거듭 제곱은 정 사각행렬에서만 가능</p>
+  </li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">solution</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">arr1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">arr2</span><span class="p">)</span> <span class="p">{</span>
+    
+      <span class="kt">int</span> <span class="n">iRow_A</span> <span class="o">=</span> <span class="n">arr1</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> 
+    <span class="kt">int</span> <span class="n">iCol_B</span> <span class="o">=</span> <span class="n">arr2</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> 
+    <span class="kt">int</span> <span class="n">iRow_B</span><span class="o">=</span> <span class="n">arr2</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+    
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">answer</span><span class="p">(</span><span class="n">iRow_A</span><span class="p">,</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">iCol_B</span><span class="p">,</span><span class="mi">0</span><span class="p">));</span>
+    
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">iRow_A</span><span class="p">;</span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">iCol_B</span><span class="p">;</span><span class="o">++</span><span class="n">j</span><span class="p">)</span>      
+        <span class="p">{</span>
+            <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">z</span><span class="o">=</span> <span class="mi">0</span><span class="p">;</span><span class="n">z</span><span class="o">&lt;</span> <span class="n">iRow_B</span><span class="p">;</span><span class="o">++</span><span class="n">z</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">answer</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">z</span><span class="p">]</span> <span class="o">*</span> <span class="n">arr2</span><span class="p">[</span><span class="n">z</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>   
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">answer</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+:ET

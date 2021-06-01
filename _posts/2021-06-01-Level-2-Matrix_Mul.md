@@ -2,7 +2,7 @@
 layout: post
 title: "Level 2 행렬의 곱셈"
 date: 2021-06-01 
-color: rgb(0,0,0)
+color: rgb(100,100,200)
 cover: '../assets/test.png'
 tags:	코테 
 ---
@@ -11,11 +11,13 @@ tags:	코테
 
 #### 행렬의 곱셈
 
-![MatrixMultiple](../assets/MatrixMultiple.png)
+#### ![MatrixMultiple](https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple.png?raw=true)
+
+
 
 - 앞 행렬의 열의 개수 = 뒤 행렬의 행의 개수 일때 곱셈 성립
 
-  ![MatrixMultiple2](../assets/MatrixMultiple2.png)
+  ![MatrixMultiple2](https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple2.png?raw=true)
 
 - 앞 행렬의 i행과 뒤 행렬의 j열의 성분을 차례로 곱한 값이  (i,j) 성분 
 
