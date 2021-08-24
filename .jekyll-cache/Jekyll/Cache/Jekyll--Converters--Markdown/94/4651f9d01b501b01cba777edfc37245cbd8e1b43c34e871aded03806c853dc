@@ -1,0 +1,102 @@
+I"�<h4 id="priority_queue">priority_queue</h4>
+
+<ul>
+  <li>
+    <queue> 헤더 사용
+
+</queue>
+  </li>
+  <li>
+    <p>priority_queue&lt;T,Container,Compare&gt;</p>
+  </li>
+  <li>
+    <p>compare 는 less 를 기준으로  최대 힙으로 생성</p>
+  </li>
+  <li>
+    <p>vector를 기본 컨테이너로 사용</p>
+  </li>
+  <li>
+    <p>최소 / 최대 원소 접근 동작에 O(1)의 시간 복잡도</p>
+  </li>
+  <li>
+    <p>원소 추가는 O(log n) 의 시간복잡도</p>
+  </li>
+  <li>
+    <p>최소/최대 데이터를 맨위까지 끌어올리는 히피파이 알고리즘이 중요</p>
+
+    <ul>
+      <li>
+        <p>하향식 재구성(TopDown Heapify)</p>
+
+        <ul>
+          <li>
+            <p>한 노드에서 Leaf까지 내려가면서 힙을 만듬</p>
+
+            <p>*추가하기</p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>상향식 재구성(BottomUp Heapify)</p>
+
+        <ul>
+          <li>
+            <p>한 노드에서 root까지 올라가면서 힙을 재구성</p>
+
+            <p>*추가하기</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h6 id="추가-및-삭제">추가 및 삭제</h6>
+
+<ul>
+  <li>push(element) : 우선순위 큐에 원소추가</li>
+  <li>pop(): 우선순위 큐에서 top의 원소 삭제 (최대 / 최소 원소에 대해서만 가능)</li>
+</ul>
+
+<h6 id="조회">조회</h6>
+
+<ul>
+  <li>top() : top에 있는 원소 반환</li>
+</ul>
+
+<h6 id="기타">기타</h6>
+
+<ul>
+  <li>Empty() : 비어있으면 true  아닐때 false</li>
+  <li>size(): 우선순위 큐에 포함되어 있는 원소들의 수를 반환</li>
+</ul>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kt">int</span> <span class="nf">solution</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">scoville</span><span class="p">,</span> <span class="kt">int</span> <span class="n">K</span><span class="p">)</span> <span class="p">{</span>
+   
+    <span class="kt">int</span> <span class="n">answer</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">min</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    
+    <span class="n">priority_queue</span><span class="o">&lt;</span> <span class="kt">int</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> 	 
+        <span class="n">qScovile</span><span class="p">(</span><span class="n">scoville</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="n">scoville</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    
+    <span class="k">while</span><span class="p">(</span><span class="n">qScovile</span><span class="p">.</span><span class="n">top</span><span class="p">()</span><span class="o">&lt;</span><span class="n">K</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">qScovile</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span>
+              <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+            
+            <span class="n">min</span> <span class="o">=</span> <span class="n">qScovile</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+            <span class="n">qScovile</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        
+            <span class="n">qScovile</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">min</span> <span class="o">+</span> <span class="p">(</span><span class="n">qScovile</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">*</span><span class="mi">2</span><span class="p">));</span>
+            
+            <span class="n">qScovile</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+          
+            <span class="o">++</span><span class="n">answer</span><span class="p">;</span>   
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">answer</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+:ET

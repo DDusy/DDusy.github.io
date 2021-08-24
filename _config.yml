@@ -1,7 +1,7 @@
 title: 뚜시뚜시 블로그
-page-title: 공부 정리 블로그
-home-title: Test
-description: TEST
+page-title: 정리용 블로그
+home-title: 
+description: 
 url: 'https://ddusy.github.io/'
 nav:
   Home: /
@@ -81,6 +81,8 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-redirect-from
+  - jekyll-feed
+  - jemoji
 whitelist:
   - jekyll-redirect-from
 logo: /assets/banner.png
@@ -117,6 +119,4 @@ exclude:
   - .git*
   - package-lock.json
   - gulpconfig.json
-plugins:
-  - jekyll-feed
-  - jemoji
+

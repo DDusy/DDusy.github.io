@@ -2,8 +2,8 @@
 layout: post
 title: "Level 2 더 맵게 / 우선순위 큐 사용"
 date: 2021-06-01 
-color: rgb(100,100,200)
-cover: '../assets/test.png'
+color: rgb(100,150,200)
+cover: '../assets/Coding_Test.png'
 tags:	코테
 ---
 
@@ -27,13 +27,9 @@ tags:	코테
 
     - 한 노드에서 Leaf까지 내려가면서 힙을 만듬
 
-      *추가하기
-
   - 상향식 재구성(BottomUp Heapify)
 
     - 한 노드에서 root까지 올라가면서 힙을 재구성
-
-      *추가하기
 
       
 

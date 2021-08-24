@@ -1,4 +1,143 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://ddusy.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://ddusy.github.io//" rel="alternate" type="text/html" /><updated>2021-05-12T11:45:07+09:00</updated><id>https://ddusy.github.io//feed.xml</id><title type="html">뚜시뚜시 블로그</title><subtitle>TEST</subtitle><author><name>true</name></author><entry><title type="html">Dump File만들기</title><link href="https://ddusy.github.io//blog/Debug/" rel="alternate" type="text/html" title="Dump File만들기" /><published>2021-05-15T00:00:00+09:00</published><updated>2021-05-15T00:00:00+09:00</updated><id>https://ddusy.github.io//blog/Debug</id><content type="html" xml:base="https://ddusy.github.io//blog/Debug/">&lt;h4 id=&quot;디버깅&quot;&gt;&lt;strong&gt;디버깅&lt;/strong&gt;&lt;/h4&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-04T13:21:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">뚜시뚜시 블로그</title><author><name>true</name></author><entry><title type="html">Level 2 더 맵게 / 우선순위 큐 사용</title><link href="http://localhost:4000/blog/Level-priority_queue/" rel="alternate" type="text/html" title="Level 2 더 맵게 / 우선순위 큐 사용" /><published>2021-06-01T00:00:00+09:00</published><updated>2021-06-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/Level-priority_queue</id><content type="html" xml:base="http://localhost:4000/blog/Level-priority_queue/">&lt;h4 id=&quot;priority_queue&quot;&gt;priority_queue&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;queue&gt; 헤더 사용
+
+&lt;/queue&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;priority_queue&amp;lt;T,Container,Compare&amp;gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;compare 는 less 를 기준으로  최대 힙으로 생성&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;vector를 기본 컨테이너로 사용&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;최소 / 최대 원소 접근 동작에 O(1)의 시간 복잡도&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;원소 추가는 O(log n) 의 시간복잡도&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;최소/최대 데이터를 맨위까지 끌어올리는 히피파이 알고리즘이 중요&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;하향식 재구성(TopDown Heapify)&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;p&gt;한 노드에서 Leaf까지 내려가면서 힙을 만듬&lt;/p&gt;
+
+            &lt;p&gt;*추가하기&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;상향식 재구성(BottomUp Heapify)&lt;/p&gt;
+
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;p&gt;한 노드에서 root까지 올라가면서 힙을 재구성&lt;/p&gt;
+
+            &lt;p&gt;*추가하기&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&quot;추가-및-삭제&quot;&gt;추가 및 삭제&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;push(element) : 우선순위 큐에 원소추가&lt;/li&gt;
+  &lt;li&gt;pop(): 우선순위 큐에서 top의 원소 삭제 (최대 / 최소 원소에 대해서만 가능)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&quot;조회&quot;&gt;조회&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;top() : top에 있는 원소 반환&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&quot;기타&quot;&gt;기타&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Empty() : 비어있으면 true  아닐때 false&lt;/li&gt;
+  &lt;li&gt;size(): 우선순위 큐에 포함되어 있는 원소들의 수를 반환&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scoville&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+   
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;priority_queue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;greater&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 	 
+        &lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoville&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scoville&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+              &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;min&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        
+            &lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;qScovile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+          
+            &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">priority_queue</summary></entry><entry><title type="html">Level 2 행렬의 곱셈</title><link href="http://localhost:4000/blog/Level-2-Matrix_Mul/" rel="alternate" type="text/html" title="Level 2 행렬의 곱셈" /><published>2021-06-01T00:00:00+09:00</published><updated>2021-06-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/Level-2-Matrix_Mul</id><content type="html" xml:base="http://localhost:4000/blog/Level-2-Matrix_Mul/">&lt;h4 id=&quot;행렬의-곱셈&quot;&gt;행렬의 곱셈&lt;/h4&gt;
+
+&lt;h4&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple.png?raw=true&quot; alt=&quot;MatrixMultiple&quot; /&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;앞 행렬의 열의 개수 = 뒤 행렬의 행의 개수 일때 곱셈 성립&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple2.png?raw=true&quot; alt=&quot;MatrixMultiple2&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;앞 행렬의 i행과 뒤 행렬의 j열의 성분을 차례로 곱한 값이  (i,j) 성분&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;행렬의 거듭 제곱은 정 사각행렬에서만 가능&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">행렬의 곱셈</summary></entry><entry><title type="html">Dump File만들기</title><link href="http://localhost:4000/blog/Debug/" rel="alternate" type="text/html" title="Dump File만들기" /><published>2021-05-15T00:00:00+09:00</published><updated>2021-05-15T00:00:00+09:00</updated><id>http://localhost:4000/blog/Debug</id><content type="html" xml:base="http://localhost:4000/blog/Debug/">&lt;h4 id=&quot;디버깅&quot;&gt;&lt;strong&gt;디버깅&lt;/strong&gt;&lt;/h4&gt;
 
 &lt;h4 id=&quot;pdb파일&quot;&gt;&lt;strong&gt;PDB파일&lt;/strong&gt;&lt;/h4&gt;
 
@@ -20,7 +159,63 @@
 
 &lt;h4 id=&quot;유저모드-덤프파일-제작해보기&quot;&gt;&lt;strong&gt;유저모드 덤프파일 제작해보기&lt;/strong&gt;&lt;/h4&gt;
 
-&lt;p&gt;프로세스의 전체 메모리 공간, 프로그램의 실행 파일 이미지, 핸들 테이블, 그 밖에 디버깅에 유용한 여러 정보를 포함한다.&lt;/p&gt;</content><author><name>true</name></author><category term="Debug" /><summary type="html">디버깅</summary></entry><entry><title type="html">Unreal4 이벤트함수</title><link href="https://ddusy.github.io//blog/Unreal0/" rel="alternate" type="text/html" title="Unreal4 이벤트함수" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>https://ddusy.github.io//blog/Unreal0</id><content type="html" xml:base="https://ddusy.github.io//blog/Unreal0/">&lt;p&gt;Posting Test&lt;/p&gt;</content><author><name>true</name></author><category term="Unreal4" /><summary type="html">Posting Test</summary></entry><entry><title type="html">Test Post</title><link href="https://ddusy.github.io//blog/C/" rel="alternate" type="text/html" title="Test Post" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>https://ddusy.github.io//blog/C</id><content type="html" xml:base="https://ddusy.github.io//blog/C/">&lt;p&gt;Posting Test&lt;/p&gt;</content><author><name>true</name></author><category term="C#" /><summary type="html">Posting Test</summary></entry><entry><title type="html">Unity 이벤트함수</title><link href="https://ddusy.github.io//blog/Unity0/" rel="alternate" type="text/html" title="Unity 이벤트함수" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>https://ddusy.github.io//blog/Unity0</id><content type="html" xml:base="https://ddusy.github.io//blog/Unity0/">&lt;p&gt;Posting Test&lt;/p&gt;</content><author><name>true</name></author><category term="Unity" /><summary type="html">Posting Test</summary></entry><entry><title type="html">Hello Jekyll</title><link href="https://ddusy.github.io//blog/hello-jekyll/" rel="alternate" type="text/html" title="Hello Jekyll" /><published>2017-04-18T00:00:00+09:00</published><updated>2017-04-18T00:00:00+09:00</updated><id>https://ddusy.github.io//blog/hello-jekyll</id><content type="html" xml:base="https://ddusy.github.io//blog/hello-jekyll/">&lt;blockquote&gt;
+&lt;p&gt;프로세스의 전체 메모리 공간, 프로그램의 실행 파일 이미지, 핸들 테이블, 그 밖에 디버깅에 유용한 여러 정보를 포함한다.&lt;/p&gt;</content><author><name>true</name></author><category term="Debug" /><summary type="html">디버깅</summary></entry><entry><title type="html">Test Post:+1:</title><link href="http://localhost:4000/blog/C/" rel="alternate" type="text/html" title="Test Post:+1:" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>http://localhost:4000/blog/C</id><content type="html" xml:base="http://localhost:4000/blog/C/">&lt;p&gt;Posting Test&lt;/p&gt;</content><author><name>true</name></author><category term="C#" /><summary type="html">Posting Test</summary></entry><entry><title type="html">Unreal4 이벤트함수</title><link href="http://localhost:4000/blog/Unreal0/" rel="alternate" type="text/html" title="Unreal4 이벤트함수" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unreal0</id><content type="html" xml:base="http://localhost:4000/blog/Unreal0/">&lt;p&gt;Posting Test&lt;/p&gt;</content><author><name>true</name></author><category term="Unreal4" /><summary type="html">Posting Test</summary></entry><entry><title type="html">Unity 이벤트함수</title><link href="http://localhost:4000/blog/Unity0/" rel="alternate" type="text/html" title="Unity 이벤트함수" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unity0</id><content type="html" xml:base="http://localhost:4000/blog/Unity0/">&lt;p&gt;첫 번째 씬 로드
+이 함수는 씬이 시작되면 호출됩니다(씬의 각 오브젝트에 대해 한 번).&lt;/p&gt;
+
+&lt;p&gt;__ Awake : __이 함수는 항상 Start 함수의 이전 및 프리팹의 인스턴스화 직후에 호출됩니다. (만약 게임 오브젝트가 시작할 때 무효인 경우, 활성화되거나 연결된 하나의 스크립트 함수가 호출될 때까지, Awake는 호출되지 않습니다.)
+__ OnEnable : __ (오브젝트가 활성화된 경우에만 호출됩니다): 이 함수는 오브젝트를 활성화 한 직후에 호출됩니다. 이것은 MonoBehaviour 인스턴스가 생성될 때, 예를 들어 레벨 로드 또는 스크립트 컴포넌트에 연결된 게임 오브젝트가 인스턴스화 될 때 발생합니다.&lt;/p&gt;
+
+&lt;p&gt;OnLevelWasLoaded: This function is executed to inform the game that a new level has been loaded.&lt;/p&gt;
+
+&lt;p&gt;씬에 추가 된 오브젝트에서 모든 스크립트는 Start, Update 등기 기타 함수가 호출되기 전에 Awake와 OnEnable 함수가 호출되는 것에 주의하십시오. 당연히 오브젝트가 게임 플레이 중에 인스턴스화 되었을 때 강제로 호출할 수 없습니다.&lt;/p&gt;
+
+&lt;p&gt;첫 번째 프레임의 업데이트 전&lt;/p&gt;
+
+&lt;p&gt;__ Start : __ 스크립트의 인스턴스가 활성화되면 첫 번째 프레임의 업데이트 전에 Start가 호출됩니다.&lt;/p&gt;
+
+&lt;p&gt;씬에 추가된 오브젝트의 Start 함수는 모든 스크립트 Update 및 기타 함수가 호출되기 전에 호출됩니다. 당연히 오브젝트가 게임 플레이 중에 인스턴스화되었을 때 강제로 호출 할 수 없습니다.&lt;/p&gt;
+
+&lt;p&gt;프레임 사이
+__ OnApplicationPause : __ 일반 프레임 업데이트 사이에서 pause가 탐지된 프레임의 끝에서 호출 됩니다. OnApplicationPause가 호출되면 추가 프레임이 발행되어, pause 상태를 나타내는 그래픽 인디케이터가 표시 됩니다.
+업데이트 순서
+게임 로직 인터랙션, 애니메이션, 카메라 위치 등을 추적하는 경우, 각종 이벤트를 사용할 수 있습니다. 일반적인 패턴은 Update() 함수 내에서 대부분의 작업을 수행하는 것입니다만, 다른 함수도 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;__ FixedUpdate : __ FixedUpdate()는 Update()보다 자주 호출되는 경우가 많습니다.
+ 프레임 속도가 낮은 경우에는 프레임마다 여러 번 호출 할 수 있지만, 프레임 속도가 높을 경우 프레임간에 호출 할 수 없습니다. 
+FixedUpdate() 직후에 모든 물리적 특성 계산 및 업데이트가 발생합니다. FixedUpdate()에서 이동 계산을 적용 할 때 Time.deltaTime 값을 곱할 필요는 없습니다. 
+이것은 프레임 속도와는 독립적으로 FixedUpdate()가 신뢰할 수있는 타이머에서 호출되기 때문 입니다.&lt;/p&gt;
+
+&lt;p&gt;__ Update : __ Update는 프레임마다 한 번씩 호출됩니다. 이것은 프레임의 업데이트에 대한 주요 기능입니다.&lt;/p&gt;
+
+&lt;p&gt;__ LateUpdate : __ LateUpdate()는 Update() 후 프레임마다 한 번씩 호출됩니다. Update()에서 수행되는 계산이 완료되면 LateUpdate() 함수가 시작 합니다. LateUpdate()의 일반적인 사용은 다음의 3인칭 카메라입니다. Update()에서 캐릭터를 이동하고 회전시킬 경우 LateUpdate()에서 카메라의 이동과 회전 계산을 수행할 수 있습니다. 이렇게하면 캐릭터가 카메라가 그 위치를 추적하기 전에 완전히 이동합니다.&lt;/p&gt;
+
+&lt;p&gt;렌더링
+__ OnPreCull : __ 카메라가 씬을 추려내기 전에 호출됩니다. 컬링(Culling)하여 카메라에 어떤 오브젝트를 표시할 지가 결정됩니다. OnPreCull은 컬링이 발생하기 직전에 호출됩니다.
+__ OnBecameVisible / OnBecameInvisible : __ 오브젝트가 카메라에 표시되거나 표시되지 않게 될 때 호출됩니다.
+__ OnWillRenderObject : __ 오브젝트가 표시되면 각 카메라에 __ 한 번 __ 호출됩니다.
+__ OnPreRender : __ 카메라가 씬의 렌더링을 시작하기 전에 호출됩니다.
+__ OnRenderObject : __ 모든 씬 렌더링 종료 후에 호출됩니다. GL 클래스 또는 Graphics.DrawMeshNow을 사용하여 
+이 시점에 사용자 지정 지오메트리를 그릴 수 있습니다.
+__ OnPostRender : __ 카메라가 씬의 렌더링을 종료한 후 호출됩니다.
+__ OnRenderImage: __ 화면 렌더링이 완료되고, 화면 이미지 처리가 가능하게 된 후에 호출됩니다.
+__ OnGUI : __ GUI 이벤트에 따라 프레임마다 여러 차례 호출됩니다. 레이아웃 및 리페인트 이벤트가 먼저 처리된 후 레이아웃 및 키보드 / 마우스 이벤트가 각 입력 이벤트에 대해 처리됩니다.
+__ OnDrawGizmos__ 시각화를 위한 씬 뷰에서 기즈모(Gizmos)를 그리는 데 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;코루틴
+일반적인 코루틴 업데이트는 Update 함수가 반환된 후 수행됩니다. 
+코루틴은 YieldInstruction이 종료할 때까지 그 실행(생성)을 중지할 수 있는 함수입니다. 코루틴의 다른 사용법은 아래와 같습니다.&lt;/p&gt;
+
+&lt;p&gt;__ yield__ 코루틴은 다음 프레임에서 모든 Update 함수가 호출된 후에 속행합니다.
+__ yield WaitForSeconds__ 프레임에 대한 모든 Update 함수가 호출된 후 지정된 시간 지연 후에 속행합니다.
+__ yield WaitForFixedUpdate__ 모든 스크립트에서 모든 FixedUpdate 호출 후 속행합니다.
+__ yield WWW__ WWW 다운로드 완료 후 속행합니다.
+__ yield StartCoroutine__ 코루틴을 연결하고 MyFunc 코루틴이 먼저 완료될 때까지 기다립니다.
+오브젝트를 파기할 때
+__ OnDestroy : __ 오브젝트 생존기간의 마지막 프레임의 프레임 업데이트 후 OnDestroy가 호출됩니다. (오브젝트는 Object.Destroy 또는 씬 종료시에 파기됩니다)
+종료 시이 함수는 씬 안에 있는 모든 활성 오브젝트에서 호출됩니다.&lt;/p&gt;
+
+&lt;p&gt;__ OnApplicationQuit : __이 함수는 응용 프로그램 종료 전에 모든 게임 오브젝트에서 호출됩니다. 에디터에서는 사용자가 재생 모드를 중지하면 호출됩니다. 웹 플레이어에서는 웹 뷰가 닫힐 때 호출됩니다.
+__ OnDisable : __이 함수는 동작이 비활성화 될 때 호출됩니다.&lt;/p&gt;</content><author><name>true</name></author><category term="Unity" /><summary type="html">첫 번째 씬 로드 이 함수는 씬이 시작되면 호출됩니다(씬의 각 오브젝트에 대해 한 번).</summary></entry><entry><title type="html">Hello Jekyll</title><link href="http://localhost:4000/blog/hello-jekyll/" rel="alternate" type="text/html" title="Hello Jekyll" /><published>2017-04-18T00:00:00+09:00</published><updated>2017-04-18T00:00:00+09:00</updated><id>http://localhost:4000/blog/hello-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/hello-jekyll/">&lt;blockquote&gt;
   &lt;p&gt;Transform your plain text into static websites and blogs.&lt;/p&gt;
 &lt;/blockquote&gt;
 

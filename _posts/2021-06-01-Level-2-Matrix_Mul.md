@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Level 2 행렬의 곱셈"
+title: "프로그래머스 Level 2 행렬의 곱셈"
 date: 2021-06-01 
-color: rgb(100,100,200)
-cover: '../assets/test.png'
+color: rgb(100,150,200)
+cover: '../assets/Coding_Test.png'
 tags:	코테 
 ---
 
