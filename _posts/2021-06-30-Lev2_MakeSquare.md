@@ -12,9 +12,9 @@ cover: '../assets/Coding_Test.png'
 
 두 자연수의 공통된 약수 중 가장 큰 수
 
-#### 
 
 
+![gcdImg](https://github.com/DDusy/DDusy.github.io/blob/main/assets/gcd.PNG)
 
 - return은 longlong형
 
