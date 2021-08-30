@@ -1,4 +1,467 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-04T13:21:07+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">뚜시뚜시 블로그</title><author><name>true</name></author><entry><title type="html">Level 2 더 맵게 / 우선순위 큐 사용</title><link href="http://localhost:4000/blog/Level-priority_queue/" rel="alternate" type="text/html" title="Level 2 더 맵게 / 우선순위 큐 사용" /><published>2021-06-01T00:00:00+09:00</published><updated>2021-06-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/Level-priority_queue</id><content type="html" xml:base="http://localhost:4000/blog/Level-priority_queue/">&lt;h4 id=&quot;priority_queue&quot;&gt;priority_queue&lt;/h4&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-30T22:50:24+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">뚜시뚜시 블로그</title><author><name>true</name></author><entry><title type="html">Dead Lock</title><link href="http://localhost:4000/blog/Chat_Pt2/" rel="alternate" type="text/html" title="Dead Lock" /><published>2021-08-26T00:00:00+09:00</published><updated>2021-08-26T00:00:00+09:00</updated><id>http://localhost:4000/blog/Chat_Pt2</id><content type="html" xml:base="http://localhost:4000/blog/Chat_Pt2/">&lt;h5 id=&quot;dead-lock교착상태&quot;&gt;Dead Lock(교착상태)&lt;/h5&gt;
+
+&lt;p&gt;프로세스가 자원을 얻지 못해서 다음 처리를 하지 못하는 상태&lt;/p&gt;
+
+&lt;p&gt;시스템적으로 한정된 자원을 여러 곳에서 사용하려고 할 때 발생&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/DeadLock.png?raw=true&quot; alt=&quot;DeadLockImg&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;dead-lock-필요조건&quot;&gt;Dead Lock 필요조건&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;상호배제&quot;&gt;상호배제&lt;/h6&gt;
+
+    &lt;p&gt;한 자원에 대해 여러 프로세스의 동시 접근이 불가&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;점유와-대기&quot;&gt;점유와 대기&lt;/h6&gt;
+
+    &lt;p&gt;자원을 가지고 있는 상태에선 다른 프로세스가 사용하고 있는 자원의 반납을 기다려야한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;비선점&quot;&gt;비선점&lt;/h6&gt;
+
+    &lt;p&gt;프로세스가 어떤 자원을 사용을 끝낼 때 까지  그 자원을 뺏을 수 없다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;순환대기&quot;&gt;순환대기&lt;/h6&gt;
+
+    &lt;p&gt;각 프로세스는 순환적으로 다음 프로세스가 요구하는 자원을 가지고 있다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;dead-lock-예방&quot;&gt;Dead Lock 예방&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;상호배제-조건의-제거&quot;&gt;상호배제 조건의 제거&lt;/h6&gt;
+
+    &lt;p&gt;교착 상태는 두 개 이상의 프로세스가 공유 불가능한 자원을 사용하니 발생하는 것이므로 공유 불가능한, 즉사 상호 배제 조건을 제거하면 교착 상태를 해결할 수 있다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;점유와-대기-조건의-제거&quot;&gt;점유와 대기 조건의 제거&lt;/h6&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;실행되기 전에 필요한 모든 자원을 점유하도록 하는 방법&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;한 자원을 점유한 상태에서 다른 자원을 요청 할 수 없도록 하는 방법&lt;/p&gt;
+        &lt;ul&gt;
+          &lt;li&gt;
+            &lt;p&gt;문제점&lt;/p&gt;
+
+            &lt;p&gt;​	할당 받은 자원을 오랫동안 사용하지 않을 경우 효율성이 낮음&lt;/p&gt;
+
+            &lt;p&gt;​	여러 자원이 필요한 프로세스는 영구적으로 기다릴 수 없음&lt;/p&gt;
+
+            &lt;p&gt;​&lt;/p&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;비선점-조건의-제거&quot;&gt;비선점 조건의 제거&lt;/h6&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;프로세스가 자원을 점유하고 있으면 바로 할당 될 수 없는 자원을 요청하면 그 프로세스가 점유하고&lt;/p&gt;
+
+        &lt;p&gt;있는 모든 자원을 해제하는 방법&lt;/p&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;프로세스A가 어떤 자원 A를 요청했을때, 다른 자원B를 기다리는 프로세스B가 점유하고 있으면&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;p&gt;자원A를 프로세스B로부터 해제하고 프로세스A에게 할당&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h6 id=&quot;순환-대기-조건의-제거&quot;&gt;순환 대기 조건의 제거&lt;/h6&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;각 자원에 번호를 부여하고 낮은 번호의 자원부터 할당&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;dead-lock-회피&quot;&gt;Dead Lock 회피&lt;/h5&gt;
+
+&lt;h6 id=&quot;은행가-알고리즘&quot;&gt;은행가 알고리즘&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;프로세스가 자원을 요구할 때, 시스템은 프로세스 생성 전 자원을 할당한 후에도 안정 상태로 남아있게 되는지 사전에 검사하여 교착 상태 회피&lt;/li&gt;
+  &lt;li&gt;안정 상태면 자원 할당, 아니면 다른 프로세스들이 자원 해지까지 대기&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;#####&lt;/p&gt;
+
+&lt;h5 id=&quot;탐지detection&quot;&gt;탐지(Detection)&lt;/h5&gt;
+
+&lt;p&gt;자원 할당 그래프를 통해 교착 상태를 탐지&lt;/p&gt;
+
+&lt;p&gt;자원 요청 시, 탐지 알고리즘을 실행시켜 그에 대한 오버헤드 발생&lt;/p&gt;
+
+&lt;h5 id=&quot;회복recovery&quot;&gt;회복(Recovery)&lt;/h5&gt;
+
+&lt;p&gt;교착 상태 일으킨 프로세스를 종료하거나, 할당된 자원을 해제시켜 회복시키는 방법&lt;/p&gt;
+
+&lt;h6 id=&quot;프로세스-종료-방법&quot;&gt;프로세스 종료 방법&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;교착 상태의 프로세스를 모두 종료&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;교착 상태가 제거될 때까지 하나씩 프로세스 종료&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;p&gt;문제점&lt;/p&gt;
+
+        &lt;p&gt;작업 중간에 강제 종료하면 일관성 문제가 발생할 수 있다.&lt;/p&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&quot;자원-선점-방법&quot;&gt;자원 선점 방법&lt;/h6&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;교착 상태의 프로세스가 점유하고 있는 자원을 선점해 다른 프로세스에게 할당 (해당 프로세스 일시정지 시킴)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;우선 순위가 낮은 프로세스나 수행 횟수 적은 프로세스 위주로 프로세스 자원 선점&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>true</name></author><category term="운영체제" /><category term="멀티스레드" /><summary type="html">Dead Lock(교착상태)</summary></entry><entry><title type="html">프로세스/스레드</title><link href="http://localhost:4000/blog/Chat_Pt1/" rel="alternate" type="text/html" title="프로세스/스레드" /><published>2021-08-25T00:00:00+09:00</published><updated>2021-08-25T00:00:00+09:00</updated><id>http://localhost:4000/blog/Chat_Pt1</id><content type="html" xml:base="http://localhost:4000/blog/Chat_Pt1/">&lt;h4 id=&quot;프로세스&quot;&gt;프로세스&lt;/h4&gt;
+
+&lt;p&gt;프로그램 실행 시 프로그램 안에 들어있는 명령어가 한 줄씩 실행 되면서 프로그램이 활동하는 상태&lt;/p&gt;
+
+&lt;p&gt;프로그램 실행시 프로그램에 있는 코드와 데이터들을  프로세스 메모리로 불러들인다.(로딩)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;멀티 프로세싱 - 여러개의 프로세스가 실행되는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;스레드&quot;&gt;스레드&lt;/h4&gt;
+
+&lt;p&gt;프로세스와 마찬가지로 프로그램이 실행되는 기본단위&lt;/p&gt;
+
+&lt;p&gt;한 프로세스 안에 여러개일 수 있다.&lt;/p&gt;
+
+&lt;p&gt;하나의 프로세스 안에 있는 스레드들은  스택을 제외한 메모리 공간을 공유한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;스택을 제외한 이유는 각 스레드에서  실행되는 함수의 로컬 변수들이 스레드마다 개별의미를 가진다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h6 id=&quot;프로세스스레드-상태&quot;&gt;프로세스/스레드 상태&lt;/h6&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/Processstatus.png?raw=true&quot; alt=&quot;statusImg&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;스레드의 개수에 따라  메인 스레드만 존재할 경우 싱글 스레드 모델 여러 개일 경우 멀티 스레드 모델이다.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>true</name></author><category term="운영체제" /><category term="멀티스레드" /><summary type="html">프로세스</summary></entry><entry><title type="html">프로그래머스 Level 2 위장</title><link href="http://localhost:4000/blog/Hashmap2/" rel="alternate" type="text/html" title="프로그래머스 Level 2 위장" /><published>2021-08-16T00:00:00+09:00</published><updated>2021-08-16T00:00:00+09:00</updated><id>http://localhost:4000/blog/Hashmap2</id><content type="html" xml:base="http://localhost:4000/blog/Hashmap2/">&lt;h4 id=&quot;경우의-수&quot;&gt;경우의 수&lt;/h4&gt;
+
+&lt;h6 id=&quot;곱의-법칙&quot;&gt;곱의 법칙&lt;/h6&gt;
+
+&lt;p&gt;​	 A사건과 B사건이 동시에 일어나는 경우   경우의 수는  A x B&lt;/p&gt;
+
+&lt;p&gt;각각의 종류를 하나의 선택&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;hashmap을 이용해 종류 수 저장&lt;/li&gt;
+  &lt;li&gt;종류 수 +  1(아무것도 선택하지 않았을때)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;n개의 종류  X  m가지 수&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;모든 옷을 입고 있으므로 1가지 수 제외&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clothes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;unordered_map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Wearing_tb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clothes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Wearing_tb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clothes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pair&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Wearing_tb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">경우의 수</summary></entry><entry><title type="html">프로그래머스 Level 2 멀쩡한 사각형</title><link href="http://localhost:4000/blog/Lev2_MakeSquare/" rel="alternate" type="text/html" title="프로그래머스 Level 2 멀쩡한 사각형" /><published>2021-07-16T00:00:00+09:00</published><updated>2021-07-16T00:00:00+09:00</updated><id>http://localhost:4000/blog/Lev2_MakeSquare</id><content type="html" xml:base="http://localhost:4000/blog/Lev2_MakeSquare/">&lt;h4 id=&quot;최대공약수&quot;&gt;최대공약수&lt;/h4&gt;
+
+&lt;p&gt;두 자연수의 공통된 약수 중 가장 큰 수&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/gcd.PNG&quot; alt=&quot;gcdImg&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;return은 longlong형&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gcd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;static_cast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;loose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+     
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">최대공약수</summary></entry><entry><title type="html">Level 2 타겟 넘버</title><link href="http://localhost:4000/blog/Lev2_TargetNumber/" rel="alternate" type="text/html" title="Level 2 타겟 넘버" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>http://localhost:4000/blog/Lev2_TargetNumber</id><content type="html" xml:base="http://localhost:4000/blog/Lev2_TargetNumber/">&lt;h4 id=&quot;bfsbreadth-first-search&quot;&gt;BFS(Breadth First Search)&lt;/h4&gt;
+
+&lt;h4 id=&quot;dfs&quot;&gt;DFS()&lt;/h4&gt;
+
+&lt;p&gt;####&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;string&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include&amp;lt;iostream&amp;gt;
+using namespace std;
+
+int answer=0;
+
+void dfs(vector&amp;lt;int&amp;gt; numbers, int target, int sum, int count)
+{
+    // target을 찾거나
+    if (count == numbers.size())        // 마지막일때
+    {
+        if (sum == target) answer++;    
+        return;
+    }
+    
+    // 덧셈 뺄셈 반복
+        dfs(numbers, target, sum + numbers[count], count + 1); 
+        dfs(numbers, target, sum - numbers[count], count + 1);
+}
+
+int solution(vector&amp;lt;int&amp;gt; numbers, int target) 
+{
+    dfs(numbers, target, 0, 0);
+    
+    return answer;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">BFS(Breadth First Search)</summary></entry><entry><title type="html">프로그래머스 Level 2 가장 큰 사각형 찾기</title><link href="http://localhost:4000/blog/Lev2_LargeSquare/" rel="alternate" type="text/html" title="프로그래머스 Level 2 가장 큰 사각형 찾기" /><published>2021-06-30T00:00:00+09:00</published><updated>2021-06-30T00:00:00+09:00</updated><id>http://localhost:4000/blog/Lev2_LargeSquare</id><content type="html" xml:base="http://localhost:4000/blog/Lev2_LargeSquare/">&lt;p&gt;Posting Test&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;iostream&amp;gt;
+#include&amp;lt;vector&amp;gt;
+#include&amp;lt;algorithm&amp;gt;
+
+using namespace std;
+
+int solution(vector&amp;lt;vector&amp;lt;int&amp;gt;&amp;gt; board)
+{
+    
+    int answer = 1234;
+    int iSizeX= board.size();
+    int iSizeY= board[0].size();
+    int max=0;
+    
+    if(iSizeX==1 || iSizeY ==1 ) return 1;
+    
+    for(int i=1;i&amp;lt;iSizeX ;++i)
+    {
+        for(int j=1;j&amp;lt;iSizeY;++j)
+        {   
+            
+            if(board[i][j]) // 1일때
+            { 
+                // algorithm - min, max / 이니셜라이즈로 묶을경우 배열 중 작은거
+                int min = std::min( {board[i-1][j],board[i][j-1], board[i-1][j-1]} );
+                
+                board[i][j] = min+1;
+                
+               max = std::max(max, min+1);
+            //   cout&amp;lt;&amp;lt;&quot;i: &quot;&amp;lt;&amp;lt;i&amp;lt;&amp;lt;&quot;,&quot;&amp;lt;&amp;lt;&quot;j: &quot;&amp;lt;&amp;lt;j&amp;lt;&amp;lt;endl;
+               
+            }
+        }
+        
+         
+    }
+    
+    return max*max ;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">Posting Test</summary></entry><entry><title type="html">소수 만들기</title><link href="http://localhost:4000/blog/MakePrime/" rel="alternate" type="text/html" title="소수 만들기" /><published>2021-06-26T00:00:00+09:00</published><updated>2021-06-26T00:00:00+09:00</updated><id>http://localhost:4000/blog/MakePrime</id><content type="html" xml:base="http://localhost:4000/blog/MakePrime/">&lt;h4 id=&quot;소수찾기&quot;&gt;소수찾기&lt;/h4&gt;
+
+&lt;h4 id=&quot;조합&quot;&gt;조합&lt;/h4&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;vector&amp;gt;
+#include &amp;lt;iostream&amp;gt;
+using namespace std;
+
+static int iPrimeCheck=0;
+
+vector&amp;lt;int&amp;gt; _Stack;
+vector&amp;lt;bool&amp;gt; check;
+
+bool PrimeCheck(int&amp;amp; _iNum)
+{
+    for(int i=2;i*i&amp;lt;=_iNum;++i)
+    {
+        if(0==_iNum%i)
+            return false;
+    }
+     return true;
+}
+
+void  combination(int _idx,int _n,int _r,vector&amp;lt;int&amp;gt;&amp;amp; nums)
+{
+
+    if(_n==_r)
+    {
+        int _total=0;
+        
+        for(auto&amp;amp; i:_Stack) { _total+=i; }
+        
+        //소수체크
+        if(PrimeCheck(_total))
+            ++iPrimeCheck;
+        
+        return;
+    }
+    
+    
+    for(int i=_idx;i&amp;lt;nums.size();i++)
+    {
+        if(check[i])
+            continue;
+        
+        check[i] =true;
+        _Stack.push_back(nums[i]);
+        combination(i,_n+1,_r,nums);
+        _Stack.pop_back();
+        check[i] =false;
+    }
+}
+
+int solution(vector&amp;lt;int&amp;gt; nums) {
+    int answer = -1;
+
+    check.resize(nums.size());
+    
+    
+    //조합으로  뽑고  숫자 판별
+    combination(0,0,3,nums);
+
+    return iPrimeCheck;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">소수찾기</summary></entry><entry><title type="html">프로그래머스 Level 2 소수 찾기</title><link href="http://localhost:4000/blog/FindPrime/" rel="alternate" type="text/html" title="프로그래머스 Level 2 소수 찾기" /><published>2021-06-23T00:00:00+09:00</published><updated>2021-06-23T00:00:00+09:00</updated><id>http://localhost:4000/blog/FindPrime</id><content type="html" xml:base="http://localhost:4000/blog/FindPrime/">&lt;h4 id=&quot;에라토스테네스의-체&quot;&gt;에라토스테네스의 체&lt;/h4&gt;
+
+&lt;h4 id=&quot;순열&quot;&gt;순열&lt;/h4&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;string&amp;gt;
+#include &amp;lt;vector&amp;gt;
+#include &amp;lt;unordered_set&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;unordered_set&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 7이하 &lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//순열 저장&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;find_all_numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+  
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]){&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;push_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;insert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stoi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;find_all_numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pop_back&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;find_all_numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 소수 찾기&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;auto&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 소수가 아니므로 제외&lt;/span&gt;
+    
+        &lt;span class=&quot;kt&quot;&gt;bool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isDivided&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isDivided&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isDivided&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">에라토스테네스의 체</summary></entry><entry><title type="html">프로그래머스 Level 2 행렬의 곱셈</title><link href="http://localhost:4000/blog/Level-2-Matrix_Mul/" rel="alternate" type="text/html" title="프로그래머스 Level 2 행렬의 곱셈" /><published>2021-06-01T00:00:00+09:00</published><updated>2021-06-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/Level-2-Matrix_Mul</id><content type="html" xml:base="http://localhost:4000/blog/Level-2-Matrix_Mul/">&lt;h4 id=&quot;행렬의-곱셈&quot;&gt;행렬의 곱셈&lt;/h4&gt;
+
+&lt;h4&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple.png?raw=true&quot; alt=&quot;MatrixMultiple&quot; /&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;앞 행렬의 열의 개수 = 뒤 행렬의 행의 개수 일때 곱셈 성립&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple2.png?raw=true&quot; alt=&quot;MatrixMultiple2&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;앞 행렬의 i행과 뒤 행렬의 j열의 성분을 차례로 곱한 값이  (i,j) 성분&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;행렬의 거듭 제곱은 정 사각행렬에서만 가능&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
+    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    
+    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">행렬의 곱셈</summary></entry><entry><title type="html">Level 2 더 맵게 / 우선순위 큐 사용</title><link href="http://localhost:4000/blog/Level-priority_queue/" rel="alternate" type="text/html" title="Level 2 더 맵게 / 우선순위 큐 사용" /><published>2021-06-01T00:00:00+09:00</published><updated>2021-06-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/Level-priority_queue</id><content type="html" xml:base="http://localhost:4000/blog/Level-priority_queue/">&lt;h4 id=&quot;priority_queue&quot;&gt;priority_queue&lt;/h4&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -29,22 +492,14 @@
         &lt;p&gt;하향식 재구성(TopDown Heapify)&lt;/p&gt;
 
         &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;한 노드에서 Leaf까지 내려가면서 힙을 만듬&lt;/p&gt;
-
-            &lt;p&gt;*추가하기&lt;/p&gt;
-          &lt;/li&gt;
+          &lt;li&gt;한 노드에서 Leaf까지 내려가면서 힙을 만듬&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;
         &lt;p&gt;상향식 재구성(BottomUp Heapify)&lt;/p&gt;
 
         &lt;ul&gt;
-          &lt;li&gt;
-            &lt;p&gt;한 노드에서 root까지 올라가면서 힙을 재구성&lt;/p&gt;
-
-            &lt;p&gt;*추가하기&lt;/p&gt;
-          &lt;/li&gt;
+          &lt;li&gt;한 노드에서 root까지 올라가면서 힙을 재구성&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -97,144 +552,4 @@
     
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">priority_queue</summary></entry><entry><title type="html">Level 2 행렬의 곱셈</title><link href="http://localhost:4000/blog/Level-2-Matrix_Mul/" rel="alternate" type="text/html" title="Level 2 행렬의 곱셈" /><published>2021-06-01T00:00:00+09:00</published><updated>2021-06-01T00:00:00+09:00</updated><id>http://localhost:4000/blog/Level-2-Matrix_Mul</id><content type="html" xml:base="http://localhost:4000/blog/Level-2-Matrix_Mul/">&lt;h4 id=&quot;행렬의-곱셈&quot;&gt;행렬의 곱셈&lt;/h4&gt;
-
-&lt;h4&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple.png?raw=true&quot; alt=&quot;MatrixMultiple&quot; /&gt;&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;앞 행렬의 열의 개수 = 뒤 행렬의 행의 개수 일때 곱셈 성립&lt;/p&gt;
-
-    &lt;p&gt;&lt;img src=&quot;https://github.com/DDusy/DDusy.github.io/blob/main/assets/MatrixMultiple2.png?raw=true&quot; alt=&quot;MatrixMultiple2&quot; /&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;앞 행렬의 i행과 뒤 행렬의 j열의 성분을 차례로 곱한 값이  (i,j) 성분&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;행렬의 거듭 제곱은 정 사각행렬에서만 가능&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-c++ highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    
-      &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    
-    &lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vector&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-    
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iRow_A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iCol_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;      
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;iRow_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   
-            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;answer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">행렬의 곱셈</summary></entry><entry><title type="html">Dump File만들기</title><link href="http://localhost:4000/blog/Debug/" rel="alternate" type="text/html" title="Dump File만들기" /><published>2021-05-15T00:00:00+09:00</published><updated>2021-05-15T00:00:00+09:00</updated><id>http://localhost:4000/blog/Debug</id><content type="html" xml:base="http://localhost:4000/blog/Debug/">&lt;h4 id=&quot;디버깅&quot;&gt;&lt;strong&gt;디버깅&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;h4 id=&quot;pdb파일&quot;&gt;&lt;strong&gt;PDB파일&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;h4 id=&quot;windows-debugger&quot;&gt;&lt;strong&gt;Windows Debugger&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;h4 id=&quot;symbol-checker&quot;&gt;&lt;strong&gt;Symbol Checker&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;h4 id=&quot;symbol&quot;&gt;&lt;strong&gt;Symbol&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;h4 id=&quot;wer&quot;&gt;&lt;strong&gt;WER&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;p&gt;Window Error Reporting&lt;/p&gt;
-
-&lt;h4 id=&quot;에러-핸들링&quot;&gt;&lt;strong&gt;에러 핸들링&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;p&gt;SEH(Standard Exception Handing)&lt;/p&gt;
-
-&lt;p&gt;SetUnhandledExceptionFilter()&lt;/p&gt;
-
-&lt;h4 id=&quot;유저모드-덤프파일-제작해보기&quot;&gt;&lt;strong&gt;유저모드 덤프파일 제작해보기&lt;/strong&gt;&lt;/h4&gt;
-
-&lt;p&gt;프로세스의 전체 메모리 공간, 프로그램의 실행 파일 이미지, 핸들 테이블, 그 밖에 디버깅에 유용한 여러 정보를 포함한다.&lt;/p&gt;</content><author><name>true</name></author><category term="Debug" /><summary type="html">디버깅</summary></entry><entry><title type="html">Test Post:+1:</title><link href="http://localhost:4000/blog/C/" rel="alternate" type="text/html" title="Test Post:+1:" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>http://localhost:4000/blog/C</id><content type="html" xml:base="http://localhost:4000/blog/C/">&lt;p&gt;Posting Test&lt;/p&gt;</content><author><name>true</name></author><category term="C#" /><summary type="html">Posting Test</summary></entry><entry><title type="html">Unreal4 이벤트함수</title><link href="http://localhost:4000/blog/Unreal0/" rel="alternate" type="text/html" title="Unreal4 이벤트함수" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unreal0</id><content type="html" xml:base="http://localhost:4000/blog/Unreal0/">&lt;p&gt;Posting Test&lt;/p&gt;</content><author><name>true</name></author><category term="Unreal4" /><summary type="html">Posting Test</summary></entry><entry><title type="html">Unity 이벤트함수</title><link href="http://localhost:4000/blog/Unity0/" rel="alternate" type="text/html" title="Unity 이벤트함수" /><published>2021-05-11T00:00:00+09:00</published><updated>2021-05-11T00:00:00+09:00</updated><id>http://localhost:4000/blog/Unity0</id><content type="html" xml:base="http://localhost:4000/blog/Unity0/">&lt;p&gt;첫 번째 씬 로드
-이 함수는 씬이 시작되면 호출됩니다(씬의 각 오브젝트에 대해 한 번).&lt;/p&gt;
-
-&lt;p&gt;__ Awake : __이 함수는 항상 Start 함수의 이전 및 프리팹의 인스턴스화 직후에 호출됩니다. (만약 게임 오브젝트가 시작할 때 무효인 경우, 활성화되거나 연결된 하나의 스크립트 함수가 호출될 때까지, Awake는 호출되지 않습니다.)
-__ OnEnable : __ (오브젝트가 활성화된 경우에만 호출됩니다): 이 함수는 오브젝트를 활성화 한 직후에 호출됩니다. 이것은 MonoBehaviour 인스턴스가 생성될 때, 예를 들어 레벨 로드 또는 스크립트 컴포넌트에 연결된 게임 오브젝트가 인스턴스화 될 때 발생합니다.&lt;/p&gt;
-
-&lt;p&gt;OnLevelWasLoaded: This function is executed to inform the game that a new level has been loaded.&lt;/p&gt;
-
-&lt;p&gt;씬에 추가 된 오브젝트에서 모든 스크립트는 Start, Update 등기 기타 함수가 호출되기 전에 Awake와 OnEnable 함수가 호출되는 것에 주의하십시오. 당연히 오브젝트가 게임 플레이 중에 인스턴스화 되었을 때 강제로 호출할 수 없습니다.&lt;/p&gt;
-
-&lt;p&gt;첫 번째 프레임의 업데이트 전&lt;/p&gt;
-
-&lt;p&gt;__ Start : __ 스크립트의 인스턴스가 활성화되면 첫 번째 프레임의 업데이트 전에 Start가 호출됩니다.&lt;/p&gt;
-
-&lt;p&gt;씬에 추가된 오브젝트의 Start 함수는 모든 스크립트 Update 및 기타 함수가 호출되기 전에 호출됩니다. 당연히 오브젝트가 게임 플레이 중에 인스턴스화되었을 때 강제로 호출 할 수 없습니다.&lt;/p&gt;
-
-&lt;p&gt;프레임 사이
-__ OnApplicationPause : __ 일반 프레임 업데이트 사이에서 pause가 탐지된 프레임의 끝에서 호출 됩니다. OnApplicationPause가 호출되면 추가 프레임이 발행되어, pause 상태를 나타내는 그래픽 인디케이터가 표시 됩니다.
-업데이트 순서
-게임 로직 인터랙션, 애니메이션, 카메라 위치 등을 추적하는 경우, 각종 이벤트를 사용할 수 있습니다. 일반적인 패턴은 Update() 함수 내에서 대부분의 작업을 수행하는 것입니다만, 다른 함수도 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;__ FixedUpdate : __ FixedUpdate()는 Update()보다 자주 호출되는 경우가 많습니다.
- 프레임 속도가 낮은 경우에는 프레임마다 여러 번 호출 할 수 있지만, 프레임 속도가 높을 경우 프레임간에 호출 할 수 없습니다. 
-FixedUpdate() 직후에 모든 물리적 특성 계산 및 업데이트가 발생합니다. FixedUpdate()에서 이동 계산을 적용 할 때 Time.deltaTime 값을 곱할 필요는 없습니다. 
-이것은 프레임 속도와는 독립적으로 FixedUpdate()가 신뢰할 수있는 타이머에서 호출되기 때문 입니다.&lt;/p&gt;
-
-&lt;p&gt;__ Update : __ Update는 프레임마다 한 번씩 호출됩니다. 이것은 프레임의 업데이트에 대한 주요 기능입니다.&lt;/p&gt;
-
-&lt;p&gt;__ LateUpdate : __ LateUpdate()는 Update() 후 프레임마다 한 번씩 호출됩니다. Update()에서 수행되는 계산이 완료되면 LateUpdate() 함수가 시작 합니다. LateUpdate()의 일반적인 사용은 다음의 3인칭 카메라입니다. Update()에서 캐릭터를 이동하고 회전시킬 경우 LateUpdate()에서 카메라의 이동과 회전 계산을 수행할 수 있습니다. 이렇게하면 캐릭터가 카메라가 그 위치를 추적하기 전에 완전히 이동합니다.&lt;/p&gt;
-
-&lt;p&gt;렌더링
-__ OnPreCull : __ 카메라가 씬을 추려내기 전에 호출됩니다. 컬링(Culling)하여 카메라에 어떤 오브젝트를 표시할 지가 결정됩니다. OnPreCull은 컬링이 발생하기 직전에 호출됩니다.
-__ OnBecameVisible / OnBecameInvisible : __ 오브젝트가 카메라에 표시되거나 표시되지 않게 될 때 호출됩니다.
-__ OnWillRenderObject : __ 오브젝트가 표시되면 각 카메라에 __ 한 번 __ 호출됩니다.
-__ OnPreRender : __ 카메라가 씬의 렌더링을 시작하기 전에 호출됩니다.
-__ OnRenderObject : __ 모든 씬 렌더링 종료 후에 호출됩니다. GL 클래스 또는 Graphics.DrawMeshNow을 사용하여 
-이 시점에 사용자 지정 지오메트리를 그릴 수 있습니다.
-__ OnPostRender : __ 카메라가 씬의 렌더링을 종료한 후 호출됩니다.
-__ OnRenderImage: __ 화면 렌더링이 완료되고, 화면 이미지 처리가 가능하게 된 후에 호출됩니다.
-__ OnGUI : __ GUI 이벤트에 따라 프레임마다 여러 차례 호출됩니다. 레이아웃 및 리페인트 이벤트가 먼저 처리된 후 레이아웃 및 키보드 / 마우스 이벤트가 각 입력 이벤트에 대해 처리됩니다.
-__ OnDrawGizmos__ 시각화를 위한 씬 뷰에서 기즈모(Gizmos)를 그리는 데 사용됩니다.&lt;/p&gt;
-
-&lt;p&gt;코루틴
-일반적인 코루틴 업데이트는 Update 함수가 반환된 후 수행됩니다. 
-코루틴은 YieldInstruction이 종료할 때까지 그 실행(생성)을 중지할 수 있는 함수입니다. 코루틴의 다른 사용법은 아래와 같습니다.&lt;/p&gt;
-
-&lt;p&gt;__ yield__ 코루틴은 다음 프레임에서 모든 Update 함수가 호출된 후에 속행합니다.
-__ yield WaitForSeconds__ 프레임에 대한 모든 Update 함수가 호출된 후 지정된 시간 지연 후에 속행합니다.
-__ yield WaitForFixedUpdate__ 모든 스크립트에서 모든 FixedUpdate 호출 후 속행합니다.
-__ yield WWW__ WWW 다운로드 완료 후 속행합니다.
-__ yield StartCoroutine__ 코루틴을 연결하고 MyFunc 코루틴이 먼저 완료될 때까지 기다립니다.
-오브젝트를 파기할 때
-__ OnDestroy : __ 오브젝트 생존기간의 마지막 프레임의 프레임 업데이트 후 OnDestroy가 호출됩니다. (오브젝트는 Object.Destroy 또는 씬 종료시에 파기됩니다)
-종료 시이 함수는 씬 안에 있는 모든 활성 오브젝트에서 호출됩니다.&lt;/p&gt;
-
-&lt;p&gt;__ OnApplicationQuit : __이 함수는 응용 프로그램 종료 전에 모든 게임 오브젝트에서 호출됩니다. 에디터에서는 사용자가 재생 모드를 중지하면 호출됩니다. 웹 플레이어에서는 웹 뷰가 닫힐 때 호출됩니다.
-__ OnDisable : __이 함수는 동작이 비활성화 될 때 호출됩니다.&lt;/p&gt;</content><author><name>true</name></author><category term="Unity" /><summary type="html">첫 번째 씬 로드 이 함수는 씬이 시작되면 호출됩니다(씬의 각 오브젝트에 대해 한 번).</summary></entry><entry><title type="html">Hello Jekyll</title><link href="http://localhost:4000/blog/hello-jekyll/" rel="alternate" type="text/html" title="Hello Jekyll" /><published>2017-04-18T00:00:00+09:00</published><updated>2017-04-18T00:00:00+09:00</updated><id>http://localhost:4000/blog/hello-jekyll</id><content type="html" xml:base="http://localhost:4000/blog/hello-jekyll/">&lt;blockquote&gt;
-  &lt;p&gt;Transform your plain text into static websites and blogs.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;welcome&quot;&gt;Welcome&lt;/h1&gt;
-
-&lt;h2 id=&quot;welcome-1&quot;&gt;Welcome&lt;/h2&gt;
-
-&lt;h3 id=&quot;welcome-2&quot;&gt;Welcome&lt;/h3&gt;
-
-&lt;p&gt;This site aims to be a comprehensive guide to Jekyll. We’ll cover topics such as getting your site up and running, creating and managing your content, customizing the way your site works and looks, deploying to various environments, and give you some advice on participating in the future development of Jekyll itself.&lt;/p&gt;
-
-&lt;h3 id=&quot;so-what-is-jekyll-exactlypermalink&quot;&gt;So what is Jekyll, exactly?Permalink&lt;/h3&gt;
-
-&lt;p&gt;Jekyll is a simple, blog-aware, static site generator. It takes a template directory containing raw text files in various formats, runs it through a converter (like &lt;a href=&quot;https://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt;) and our &lt;a href=&quot;https://github.com/Shopify/liquid/wiki&quot;&gt;Liquid&lt;/a&gt; renderer, and spits out a complete, ready-to-publish static website suitable for serving with your favorite web server. Jekyll also happens to be the engine behind GitHub Pages, which means you can use Jekyll to host your project’s page, blog, or website from GitHub’s servers for free.&lt;/p&gt;
-
-&lt;h3 id=&quot;helpful-hintspermalink&quot;&gt;Helpful HintsPermalink&lt;/h3&gt;
-
-&lt;p&gt;Throughout this guide there are a number of small-but-handy pieces of information that can make using Jekyll easier, more interesting, and less hazardous. Here’s what to look out for.&lt;/p&gt;
-
-&lt;h3 id=&quot;video-test&quot;&gt;Video Test&lt;/h3&gt;
-
-&lt;iframe type=&quot;text/html&quot; width=&quot;100%&quot; height=&quot;385&quot; src=&quot;http://www.youtube.com/embed/gfmjMWjn-Xg&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</content><author><name>Jekyll</name></author><category term="jekyll" /><summary type="html">Transform your plain text into static websites and blogs.</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>true</name></author><category term="코테" /><summary type="html">priority_queue</summary></entry></feed>

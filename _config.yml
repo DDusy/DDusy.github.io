@@ -61,15 +61,14 @@ kramdown:
   input: GFM
 highlighter: rouge
 pygmentsTheme: default
-disqus: false
-disqus_url: 
+# disqus  
+disqus: true
+disqus_url: 'https://https-ddusy-github-io.disqus.com/embed.js'
 livere: false
 livere_uid: MTAyMC8zNDI2OS8xMDgwNg==
 Gitment: false
-Gitment_owner: ''
-Gitment_repo: ''
-client_id: ''
-client_secret: ''
+Gitment_owner: 'DDusy'
+Gitment_repo: 'https://github.com/DDusy/DDusy.github.io'
 social-share: true
 social-share-items:
 baidu: false

@@ -194,8 +194,8 @@
   <!-- Page width is greater than 800px -->
   <div class="left-area">
     
-      <a href="javascript:;" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='rgb(100,150,200)';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"><</a>
-      <div id="left-tab" style="display:none;"><span class="left-san"></span><span class="left-main" style="color:rgb(100,150,200);"><sapn class="main">No previous page</sapn></span></div>
+      <a href="/blog/FindPrime/" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='rgb(100,150,200)';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"><</a>
+      <div id="left-tab" style="display:none;"><span class="left-san"></span><span class="left-main" style="color:rgb(100,150,200);"><sapn class="main">프로그래머스 Level 2 소수 찾기</sapn></span></div>
     
   </div>
   <div class="post-titlearea">
@@ -207,17 +207,17 @@
   <div class="right-area">
     
       <a href="/blog/Level-2-Matrix_Mul/" class="btn bounceInRight self-animated" onmouseover="showRight();this.style.color='rgb(100,150,200)';" onmouseout="goneRight();this.style.color='rgba(0,0,0,.2)';">></a>
-      <div id="right-tab" style="display:none;"><span class="right-san"></span><span class="right-main" style="color:rgb(100,150,200);"><sapn class="main">Level 2 행렬의 곱셈</sapn></span></div>
+      <div id="right-tab" style="display:none;"><span class="right-san"></span><span class="right-main" style="color:rgb(100,150,200);"><sapn class="main">프로그래머스 Level 2 행렬의 곱셈</sapn></span></div>
     
   </div>
 
   <!-- Page width is less than 800px -->
   <div class="post-changearea">
     
-      <a href="javascript:;" class="leftchange" style="border-right: 1px solid rgb(100,150,200);border-bottom: 2px solid rgb(100,150,200);"><span><br>No previous one</span></a>
+      <a href="/blog/FindPrime/" class="leftchange" style="border-right: 1px solid rgb(100,150,200);border-bottom: 2px solid rgb(100,150,200);"><span>Previous<br><br>프로그래머스 Level 2 소수 찾기</span></a>
     
     
-      <a href="/blog/Level-2-Matrix_Mul/" class="rightchange" style="border-left: 1px solid rgb(100,150,200);border-bottom: 2px solid rgb(100,150,200);"><span>Next<br><br>Level 2 행렬의 곱셈</span></a>
+      <a href="/blog/Level-2-Matrix_Mul/" class="rightchange" style="border-left: 1px solid rgb(100,150,200);border-bottom: 2px solid rgb(100,150,200);"><span>Next<br><br>프로그래머스 Level 2 행렬의 곱셈</span></a>
     
   </div>
 </div>
@@ -258,22 +258,14 @@
         <p>하향식 재구성(TopDown Heapify)</p>
 
         <ul>
-          <li>
-            <p>한 노드에서 Leaf까지 내려가면서 힙을 만듬</p>
-
-            <p>*추가하기</p>
-          </li>
+          <li>한 노드에서 Leaf까지 내려가면서 힙을 만듬</li>
         </ul>
       </li>
       <li>
         <p>상향식 재구성(BottomUp Heapify)</p>
 
         <ul>
-          <li>
-            <p>한 노드에서 root까지 올라가면서 힙을 재구성</p>
-
-            <p>*추가하기</p>
-          </li>
+          <li>한 노드에서 root까지 올라가면서 힙을 재구성</li>
         </ul>
       </li>
     </ul>
@@ -354,6 +346,32 @@
 <a id="htmldown" name="htmldown"></a>
 <!-- Introducing the comment module -->
 
+    <section class="post-footer-item comment">
+      <div id="disqus_thread"></div>
+    </section>
+
+    <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+          s = d.createElement('script');
+        /*写入自己的disqus信息*/
+        s.src = 'https://https-ddusy-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+
+    </script>
+
+
 
 
 
@@ -366,7 +384,7 @@
         Top
     </div>
   </a>
-  <a title="At the bottom评论哦" class="gotobottom" href="#htmldown" target="_self">
+  <a title="At the bottomdisqus评论哦" class="gotobottom" href="#htmldown" target="_self">
     <div class="box" style="font-family:'ffad_matroregular';">
         Foot
     </div>

@@ -194,8 +194,8 @@
   <!-- Page width is greater than 800px -->
   <div class="left-area">
     
-      <a href="/blog/Debug/" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='rgb(255,90,90)';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"><</a>
-      <div id="left-tab" style="display:none;"><span class="left-san"></span><span class="left-main" style="color:rgb(255,90,90);"><sapn class="main">Dump File만들기</sapn></span></div>
+      <a href="/blog/Level-2-Matrix_Mul/" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='rgb(255,90,90)';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"><</a>
+      <div id="left-tab" style="display:none;"><span class="left-san"></span><span class="left-main" style="color:rgb(255,90,90);"><sapn class="main">프로그래머스 Level 2 행렬의 곱셈</sapn></span></div>
     
   </div>
   <div class="post-titlearea">
@@ -206,18 +206,18 @@
   </div>
   <div class="right-area">
     
-      <a href="/blog/Unity0/" class="btn bounceInRight self-animated" onmouseover="showRight();this.style.color='rgb(255,90,90)';" onmouseout="goneRight();this.style.color='rgba(0,0,0,.2)';">></a>
-      <div id="right-tab" style="display:none;"><span class="right-san"></span><span class="right-main" style="color:rgb(255,90,90);"><sapn class="main">Unity 이벤트함수</sapn></span></div>
+      <a href="javascript:;" class="btn bounceInRight self-animated" onmouseover="showRight();this.style.color='rgb(255,90,90)';" onmouseout="goneRight();this.style.color='rgba(0,0,0,.2)';">></a>
+      <div id="right-tab" style="display:none;"><span class="right-san"></span><span class="right-main" style="color:rgb(255,90,90);"><sapn class="main">No next page</sapn></span></div>
     
   </div>
 
   <!-- Page width is less than 800px -->
   <div class="post-changearea">
     
-      <a href="/blog/Debug/" class="leftchange" style="border-right: 1px solid rgb(255,90,90);border-bottom: 2px solid rgb(255,90,90);"><span>Previous<br><br>Dump File만들기</span></a>
+      <a href="/blog/Level-2-Matrix_Mul/" class="leftchange" style="border-right: 1px solid rgb(255,90,90);border-bottom: 2px solid rgb(255,90,90);"><span>Previous<br><br>프로그래머스 Level 2 행렬의 곱셈</span></a>
     
     
-      <a href="/blog/Unity0/" class="rightchange" style="border-left: 1px solid rgb(255,90,90);border-bottom: 2px solid rgb(255,90,90);"><span>Next<br><br>Unity 이벤트함수</span></a>
+      <a href="javascript:;" class="rightchange" style="border-left: 1px solid rgb(255,90,90);border-bottom: 2px solid rgb(255,90,90);"><span><br>No next article</span></a>
     
   </div>
 </div>
@@ -261,6 +261,32 @@
 <a id="htmldown" name="htmldown"></a>
 <!-- Introducing the comment module -->
 
+    <section class="post-footer-item comment">
+      <div id="disqus_thread"></div>
+    </section>
+
+    <script>
+      /**
+       *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document,
+          s = d.createElement('script');
+        /*写入自己的disqus信息*/
+        s.src = 'https://https-ddusy-github-io.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+
+    </script>
+
+
 
 
 
@@ -273,7 +299,7 @@
         Top
     </div>
   </a>
-  <a title="At the bottom评论哦" class="gotobottom" href="#htmldown" target="_self">
+  <a title="At the bottomdisqus评论哦" class="gotobottom" href="#htmldown" target="_self">
     <div class="box" style="font-family:'ffad_matroregular';">
         Foot
     </div>
