@@ -9,7 +9,6 @@ cover: '../assets/Coding_Test.png'
 Posting Test
 
 ```
-#include <iostream>
 #include<vector>
 #include<algorithm>
 
@@ -32,13 +31,11 @@ int solution(vector<vector<int>> board)
             
             if(board[i][j]) // 1일때
             { 
-                // algorithm - min, max / 이니셜라이즈로 묶을경우 배열 중 작은거
                 int min = std::min( {board[i-1][j],board[i][j-1], board[i-1][j-1]} );
                 
                 board[i][j] = min+1;
                 
                max = std::max(max, min+1);
-            //   cout<<"i: "<<i<<","<<"j: "<<j<<endl;
                
             }
         }
