@@ -20,7 +20,7 @@ https://ko.wikipedia.org/wiki/%EC%9C%A0%ED%81%B4%EB%A6%AC%EB%93%9C_%ED%98%B8%EC%
 
 
 
-![gcdImg](https://github.com/DDusy/DDusy.github.io/blob/main/assets/gcd.PNG)
+![gcdImg](https://github.com/DDusy/DDusy.github.io/blob/main/assets/gcd.PNG?raw=true)
 
 - return은 longlong형
 
