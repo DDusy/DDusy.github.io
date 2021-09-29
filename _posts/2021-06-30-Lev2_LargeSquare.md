@@ -6,7 +6,15 @@ tags: 코테
 color: rgb(100,150,200)
 cover: '../assets/Coding_Test.png'
 ---
-Posting Test
+#### 문제 접근 방식
+
+1,1 부터 3방향을 검사하며 사각형 크기 확인 후 3개 중 가장 작은 수  +1 
+
+가장 큰지 비교해가면서 사각형 사이즈를 찾고 사각형 사이즈니까 길이 * 길이
+
+![Square](https://github.com/DDusy/DDusy.github.io/blob/main/assets/ThebiggestSquare.png?raw=true)
+
+#### 코드
 
 ```
 #include<vector>
